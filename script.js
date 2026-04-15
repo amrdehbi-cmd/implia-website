@@ -1,167 +1,281 @@
-
-/* =============================================
+/* ============================================================
    ImplIA — script.js
-   Fonctionnalités : navbar scroll, hamburger menu,
-   animations fade-in, smooth scroll
-   ============================================= */
+   Features:
+   - Bilingual toggle (FR / EN) — data-fr / data-en attributes
+   - Sticky navbar with scrolled state
+   - Mobile hamburger menu
+   - Reveal-on-scroll animations (IntersectionObserver)
+   - Active nav link tracking
+   - Smooth anchor scroll with offset
+   ============================================================ */
 
-/* ── 1. Navbar : effet scroll ── */
-const navbar = document.getElementById('navbar');
+'use strict';
 
-function handleNavbarScroll() {
-  if (window.scrollY > 40) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+/* ──────────────────────────────────────────────
+   1. LANGUAGE SYSTEM
+   All translatable elements carry:
+     data-fr="French text"
+     data-en="English text"
+   The toggle switches between the two.
+────────────────────────────────────────────── */
+const LANG_KEY = 'implia_lang';
+
+let currentLang = localStorage.getItem(LANG_KEY) || 'fr';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem(LANG_KEY, lang);
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+
+  // Update page title
+  document.title = lang === 'fr'
+    ? 'ImplIA — Automatisation IA pour entreprises'
+    : 'ImplIA — AI Automation for Businesses';
+
+  // Update meta description
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    metaDesc.setAttribute('content', lang === 'fr'
+      ? 'ImplIA implémente des solutions d\'intelligence artificielle sur mesure pour automatiser les processus des PME et augmenter leur productivité.'
+      : 'ImplIA implements custom artificial intelligence solutions to automate SMB processes and increase productivity.'
+    );
   }
-}
 
-window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-handleNavbarScroll(); // état initial
-
-
-/* ── 2. Hamburger menu mobile ── */
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('nav-links');
-
-hamburger.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open', isOpen);
-  hamburger.setAttribute('aria-expanded', isOpen);
-});
-
-// Fermer le menu si on clique sur un lien
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', false);
-  });
-});
-
-// Fermer le menu si on clique en dehors
-document.addEventListener('click', (e) => {
-  if (!navbar.contains(e.target)) {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
-  }
-});
-
-
-/* ── 3. Animations Fade-in au scroll (Intersection Observer) ── */
-const fadeEls = document.querySelectorAll('.fade-in');
-
-const observerOptions = {
-  root: null,
-  rootMargin: '0px 0px -80px 0px', // déclenche 80px avant le bas de fenêtre
-  threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      // Petit délai en cascade pour les éléments groupés
-      const delay = entry.target.dataset.delay || 0;
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, delay);
-      observer.unobserve(entry.target); // animer une seule fois
+  // Translate all elements with data-fr / data-en
+  document.querySelectorAll('[data-fr][data-en]').forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (text) {
+      // Handle input placeholders differently
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = text;
+      } else {
+        el.textContent = text;
+      }
     }
   });
-}, observerOptions);
 
-// Ajouter un délai en cascade aux cartes dans les grilles
-document.querySelectorAll('.problem-grid .fade-in, .solutions-grid .fade-in, .benefits-grid .fade-in').forEach((el, i) => {
-  el.dataset.delay = i * 120; // 120ms entre chaque carte
-});
+  // Update toggle UI
+  document.querySelectorAll('.lang-opt').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === lang);
+  });
+}
 
-fadeEls.forEach(el => observer.observe(el));
+function initLanguage() {
+  const toggle = document.getElementById('lang-toggle');
+  if (!toggle) return;
+
+  toggle.addEventListener('click', () => {
+    const next = currentLang === 'fr' ? 'en' : 'fr';
+    applyLanguage(next);
+  });
+
+  // Apply on load (restores from localStorage or defaults to FR)
+  applyLanguage(currentLang);
+}
 
 
-/* ── 4. Smooth scroll pour les ancres ── */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (href === '#') return;
+/* ──────────────────────────────────────────────
+   2. STICKY HEADER
+────────────────────────────────────────────── */
+function initHeader() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
 
-    const target = document.querySelector(href);
-    if (!target) return;
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 24);
+  };
 
-    e.preventDefault();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
 
-    const navHeight = navbar.offsetHeight;
-    const targetPos = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
 
-    window.scrollTo({
-      top: targetPos,
-      behavior: 'smooth'
+/* ──────────────────────────────────────────────
+   3. MOBILE HAMBURGER MENU
+────────────────────────────────────────────── */
+function initMobileMenu() {
+  const btn  = document.getElementById('hamburger');
+  const nav  = document.getElementById('main-nav');
+  if (!btn || !nav) return;
+
+  let isOpen = false;
+
+  const open = () => {
+    isOpen = true;
+    nav.classList.add('nav-open');
+    btn.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    isOpen = false;
+    nav.classList.remove('nav-open');
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  btn.addEventListener('click', () => isOpen ? close() : open());
+
+  // Close on nav link click
+  nav.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', close);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (isOpen && !nav.contains(e.target) && !btn.contains(e.target)) close();
+  });
+
+  // Close on resize past breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900 && isOpen) close();
+  });
+}
+
+
+/* ──────────────────────────────────────────────
+   4. REVEAL ON SCROLL
+   Elements with class .reveal animate in
+   when they enter the viewport.
+────────────────────────────────────────────── */
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+
+  // Stagger sibling .reveal elements in the same parent
+  const parents = new Set();
+  els.forEach(el => parents.add(el.parentElement));
+  parents.forEach(parent => {
+    const children = parent.querySelectorAll(':scope > .reveal');
+    children.forEach((child, i) => {
+      child.style.transitionDelay = `${i * 80}ms`;
     });
   });
-});
 
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.1
+  });
 
-/* ── 5. Animation du compteur pour les stats hero ── */
-function animateCounter(el, end, duration = 1200) {
-  const start = 0;
-  const increment = end / (duration / 16);
-  let current = start;
-
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= end) {
-      current = end;
-      clearInterval(timer);
-    }
-    el.textContent = Math.floor(current) + (el.dataset.suffix || '');
-  }, 16);
+  els.forEach(el => io.observe(el));
 }
 
-// Observer dédié pour les stats
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Animer les métriques des cas d'usage uniquement
-      entry.target.querySelectorAll('.result-num').forEach(num => {
-        const value = parseInt(num.textContent);
-        if (!isNaN(value) && value > 0) {
-          animateCounter(num, value);
-        }
+
+/* ──────────────────────────────────────────────
+   5. ACTIVE NAV LINK
+   Highlights the nav link matching the
+   visible section.
+────────────────────────────────────────────── */
+function initActiveNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  if (!sections.length || !navLinks.length) return;
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, {
+    rootMargin: '-40% 0px -55% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => io.observe(s));
+}
+
+
+/* ──────────────────────────────────────────────
+   6. SMOOTH SCROLL WITH NAV OFFSET
+────────────────────────────────────────────── */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+
+      const header = document.getElementById('site-header');
+      const offset = header ? header.offsetHeight + 12 : 80;
+      const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+}
+
+
+/* ──────────────────────────────────────────────
+   7. METRIC CARDS — subtle entrance stagger
+   (hero section metrics)
+────────────────────────────────────────────── */
+function initMetricCards() {
+  const cards = document.querySelectorAll('.metric-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(12px)';
+    card.style.transition = `opacity 500ms cubic-bezier(0.22,1,0.36,1), transform 500ms cubic-bezier(0.22,1,0.36,1)`;
+    card.style.transitionDelay = `${400 + i * 100}ms`;
+    // Trigger after a tick so the initial state is painted
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
       });
-      statsObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.3 });
-
-const usecaseResults = document.querySelector('.usecase-results');
-if (usecaseResults) {
-  statsObserver.observe(usecaseResults);
-}
-
-
-/* ── 6. Active nav link au scroll ── */
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-
-function setActiveLink() {
-  const scrollY = window.scrollY + navbar.offsetHeight + 80;
-
-  sections.forEach(section => {
-    const top    = section.offsetTop;
-    const height = section.offsetHeight;
-    const id     = section.getAttribute('id');
-
-    if (scrollY >= top && scrollY < top + height) {
-      navAnchors.forEach(a => a.classList.remove('active'));
-      const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
-      if (activeLink) activeLink.classList.add('active');
-    }
+    });
   });
 }
 
-window.addEventListener('scroll', setActiveLink, { passive: true });
-setActiveLink();
+
+/* ──────────────────────────────────────────────
+   8. HERO TEXT — line-by-line entrance
+────────────────────────────────────────────── */
+function initHeroEntrance() {
+  const elements = document.querySelectorAll('.eyebrow, .hero-heading .line, .hero-body, .hero-actions');
+  elements.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = `opacity 600ms cubic-bezier(0.22,1,0.36,1), transform 600ms cubic-bezier(0.22,1,0.36,1)`;
+    el.style.transitionDelay = `${i * 90}ms`;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    });
+  });
+}
 
 
-/* ── 7. Console log sympa pour les devs ── */
-console.log('%c ImplIA 🤖 ', 'background:#6366f1;color:#fff;font-size:14px;font-weight:bold;padding:6px 12px;border-radius:6px;');
-console.log('%c Site développé pour ImplIA — Montréal, Québec', 'color:#9898b0;font-size:11px;');
+/* ──────────────────────────────────────────────
+   INIT
+────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  initLanguage();
+  initHeader();
+  initMobileMenu();
+  initReveal();
+  initActiveNav();
+  initSmoothScroll();
+  initMetricCards();
+  initHeroEntrance();
+});
