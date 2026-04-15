@@ -1,371 +1,381 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ImplIA — Automatisez vos processus avec l'IA</title>
-  <meta name="description" content="ImplIA implémente des outils d'intelligence artificielle pour automatiser vos processus et augmenter votre productivité de 30 à 50%." />
+  <title>ImplIA — Automatisation IA pour entreprises</title>
+  <meta name="description" content="ImplIA implémente des solutions d'intelligence artificielle sur mesure pour automatiser les processus des PME et augmenter leur productivité." />
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- ===================== NAVIGATION ===================== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner container">
-      <a href="#hero" class="logo">Impl<span class="logo-accent">IA</span></a>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#probleme">Problème</a></li>
-        <li><a href="#solutions">Solutions</a></li>
-        <li><a href="#benefices">Bénéfices</a></li>
-        <li><a href="#cas-usage">Cas d'usage</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact" class="btn btn-nav">Prendre RDV</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+  <!-- ========================================================
+       NAVIGATION
+  ======================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner container">
 
-  <!-- ===================== HERO ===================== -->
-  <section class="hero" id="hero">
-    <div class="container hero-inner">
-      <div class="hero-content fade-in">
-        <span class="badge">🤖 Intelligence Artificielle pour entreprises</span>
-        <h1>Automatisez jusqu'à <span class="gradient-text">50% de vos tâches</span> avec l'IA</h1>
-        <p class="hero-sub">ImplIA intègre des solutions d'intelligence artificielle sur mesure pour éliminer les tâches répétitives, réduire vos coûts et libérer le plein potentiel de votre équipe.</p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary">Prendre un rendez-vous →</a>
-          <a href="#solutions" class="btn btn-ghost">Découvrir les solutions</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-num">50%</span>
-            <span class="stat-label">tâches automatisées</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-num">40%</span>
-            <span class="stat-label">réduction des coûts</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-num">3×</span>
-            <span class="stat-label">gain de productivité</span>
-          </div>
-        </div>
+      <a href="#" class="wordmark" aria-label="ImplIA">
+        Impl<span>IA</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" role="navigation">
+        <a href="#probleme" data-fr="Le problème" data-en="The Problem" class="nav-link">Le problème</a>
+        <a href="#solutions" data-fr="Solutions" data-en="Solutions" class="nav-link">Solutions</a>
+        <a href="#benefices" data-fr="Résultats" data-en="Results" class="nav-link">Résultats</a>
+        <a href="#apropos" data-fr="À propos" data-en="About" class="nav-link">À propos</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language toggle -->
+        <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+          <span class="lang-opt" data-lang="fr">FR</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" data-lang="en">EN</span>
+        </button>
+        <a href="#contact" class="btn-cta header-cta" data-fr="Prendre contact" data-en="Get in touch">Prendre contact</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
       </div>
-      <div class="hero-visual fade-in fade-in-delay">
-        <!-- Illustration SVG moderne -->
-        <div class="hero-card-stack">
-          <div class="float-card card-1">
-            <div class="card-icon">📧</div>
-            <div>
-              <div class="card-title">Email automatisé</div>
-              <div class="card-sub">Réponse envoyée en 2s</div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========================================================
+         HERO
+    ======================================================== -->
+    <section class="hero" id="hero">
+      <div class="container hero-layout">
+
+        <div class="hero-text">
+          <p class="eyebrow" data-fr="Automatisation IA pour PME" data-en="AI Automation for SMBs">Automatisation IA pour PME</p>
+          <h1 class="hero-heading">
+            <span class="line" data-fr="Vos processus," data-en="Your processes,">Vos processus,</span>
+            <span class="line italic" data-fr="automatisés." data-en="automated.">automatisés.</span>
+          </h1>
+          <p class="hero-body" data-fr="ImplIA intègre des solutions d'intelligence artificielle dans les opérations des entreprises — pour éliminer les tâches répétitives, réduire les coûts et recentrer vos équipes sur ce qui crée de la valeur." data-en="ImplIA embeds artificial intelligence solutions into business operations — eliminating repetitive tasks, reducing costs, and refocusing your teams on what drives real value.">ImplIA intègre des solutions d'intelligence artificielle dans les opérations des entreprises — pour éliminer les tâches répétitives, réduire les coûts et recentrer vos équipes sur ce qui crée de la valeur.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary" data-fr="Réserver un appel" data-en="Book a call">Réserver un appel</a>
+            <a href="#solutions" class="btn-secondary" data-fr="Voir les solutions" data-en="See solutions">Voir les solutions</a>
+          </div>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <span class="metric-value">50%</span>
+            <span class="metric-label" data-fr="réduction des tâches manuelles" data-en="reduction in manual tasks">réduction des tâches manuelles</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">3×</span>
+            <span class="metric-label" data-fr="gain de productivité moyen" data-en="average productivity gain">gain de productivité moyen</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">−40%</span>
+            <span class="metric-label" data-fr="de coûts opérationnels" data-en="in operational costs">de coûts opérationnels</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-rule container">
+        <div class="rule-line"></div>
+        <p class="rule-text" data-fr="Montréal, Québec — Implémentation sur mesure" data-en="Montréal, Québec — Custom implementation">Montréal, Québec — Implémentation sur mesure</p>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PROBLÈME
+    ======================================================== -->
+    <section class="section" id="probleme">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-tag" data-fr="01 — Le problème" data-en="01 — The Problem">01 — Le problème</p>
+          <h2 data-fr="Chaque heure consacrée à des tâches répétitives est une heure perdue pour votre croissance." data-en="Every hour spent on repetitive tasks is an hour lost to your growth.">Chaque heure consacrée à des tâches répétitives est une heure perdue pour votre croissance.</h2>
+        </div>
+
+        <div class="problem-grid">
+          <div class="problem-item reveal">
+            <div class="problem-num">01</div>
+            <h3 data-fr="Volume administratif" data-en="Administrative overload">Volume administratif</h3>
+            <p data-fr="Factures, contrats, courriels entrants, rapports : vos équipes passent jusqu'à 40 % de leur temps sur des tâches à faible valeur ajoutée qui pourraient être traitées automatiquement." data-en="Invoices, contracts, incoming emails, reports: your teams spend up to 40% of their time on low-value tasks that could be handled automatically.">Factures, contrats, courriels entrants, rapports : vos équipes passent jusqu'à 40 % de leur temps sur des tâches à faible valeur ajoutée qui pourraient être traitées automatiquement.</p>
+          </div>
+          <div class="problem-item reveal">
+            <div class="problem-num">02</div>
+            <h3 data-fr="Erreurs et délais" data-en="Errors and delays">Erreurs et délais</h3>
+            <p data-fr="Les processus manuels introduisent des erreurs humaines, des retards de traitement et des incohérences qui affectent directement la satisfaction client et la rentabilité." data-en="Manual processes introduce human error, processing delays, and inconsistencies that directly affect customer satisfaction and profitability.">Les processus manuels introduisent des erreurs humaines, des retards de traitement et des incohérences qui affectent directement la satisfaction client et la rentabilité.</p>
+          </div>
+          <div class="problem-item reveal">
+            <div class="problem-num">03</div>
+            <h3 data-fr="Scalabilité limitée" data-en="Limited scalability">Scalabilité limitée</h3>
+            <p data-fr="Croître sans automatiser, c'est multiplier les coûts linéairement. Les entreprises qui automatisent leurs opérations grandissent plus vite, à moindre coût, avec moins de risques." data-en="Growing without automating means multiplying costs linearly. Companies that automate their operations grow faster, at lower cost, with less risk.">Croître sans automatiser, c'est multiplier les coûts linéairement. Les entreprises qui automatisent leurs opérations grandissent plus vite, à moindre coût, avec moins de risques.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SOLUTIONS
+    ======================================================== -->
+    <section class="section section-dark" id="solutions">
+      <div class="container">
+
+        <div class="section-header section-header-light">
+          <p class="section-tag section-tag-light" data-fr="02 — Solutions" data-en="02 — Solutions">02 — Solutions</p>
+          <h2 data-fr="Des automatisations concrètes, intégrées à vos outils existants." data-en="Concrete automations, integrated into your existing tools.">Des automatisations concrètes, intégrées à vos outils existants.</h2>
+        </div>
+
+        <div class="solutions-list">
+
+          <div class="solution-row reveal">
+            <div class="solution-index">01</div>
+            <div class="solution-content">
+              <h3 data-fr="Traitement de documents" data-en="Document processing">Traitement de documents</h3>
+              <p data-fr="Extraction automatique de données depuis vos factures, contrats et bons de commande. Classification, validation et intégration directe dans vos systèmes comptables ou ERP — sans intervention humaine." data-en="Automatic data extraction from your invoices, contracts, and purchase orders. Classification, validation, and direct integration into your accounting or ERP systems — without human intervention.">Extraction automatique de données depuis vos factures, contrats et bons de commande. Classification, validation et intégration directe dans vos systèmes comptables ou ERP — sans intervention humaine.</p>
+              <ul class="solution-tags">
+                <li data-fr="Factures fournisseurs" data-en="Supplier invoices">Factures fournisseurs</li>
+                <li data-fr="Contrats et annexes" data-en="Contracts & annexes">Contrats et annexes</li>
+                <li data-fr="Rapports automatisés" data-en="Automated reports">Rapports automatisés</li>
+              </ul>
             </div>
-            <span class="card-check">✓</span>
           </div>
-          <div class="float-card card-2">
-            <div class="card-icon">📄</div>
-            <div>
-              <div class="card-title">Facture traitée</div>
-              <div class="card-sub">Extraction données OK</div>
+
+          <div class="solution-row reveal">
+            <div class="solution-index">02</div>
+            <div class="solution-content">
+              <h3 data-fr="Gestion des communications" data-en="Communications management">Gestion des communications</h3>
+              <p data-fr="Tri, priorisation et traitement automatique de vos courriels entrants. L'IA détecte l'intention, catégorise les demandes et génère des réponses adaptées — votre équipe intervient uniquement sur les cas complexes." data-en="Automatic sorting, prioritization, and handling of incoming emails. AI detects intent, categorizes requests, and generates tailored responses — your team only steps in for complex cases.">Tri, priorisation et traitement automatique de vos courriels entrants. L'IA détecte l'intention, catégorise les demandes et génère des réponses adaptées — votre équipe intervient uniquement sur les cas complexes.</p>
+              <ul class="solution-tags">
+                <li data-fr="Réponses automatiques" data-en="Automated replies">Réponses automatiques</li>
+                <li data-fr="Routage intelligent" data-en="Smart routing">Routage intelligent</li>
+                <li data-fr="Intégration Gmail / Outlook" data-en="Gmail / Outlook integration">Intégration Gmail / Outlook</li>
+              </ul>
             </div>
-            <span class="card-check">✓</span>
           </div>
-          <div class="float-card card-3">
-            <div class="card-icon">💬</div>
-            <div>
-              <div class="card-title">Support client IA</div>
-              <div class="card-sub">98% de satisfaction</div>
+
+          <div class="solution-row reveal">
+            <div class="solution-index">03</div>
+            <div class="solution-content">
+              <h3 data-fr="Assistants internes et support client" data-en="Internal assistants & customer support">Assistants internes et support client</h3>
+              <p data-fr="Déployez un assistant IA connecté à votre base de connaissances pour répondre aux questions récurrentes de vos équipes ou de vos clients — disponible en permanence, cohérent, et capable d'escalader vers un humain." data-en="Deploy an AI assistant connected to your knowledge base to answer recurring questions from your teams or clients — always available, consistent, and capable of escalating to a human.">Déployez un assistant IA connecté à votre base de connaissances pour répondre aux questions récurrentes de vos équipes ou de vos clients — disponible en permanence, cohérent, et capable d'escalader vers un humain.</p>
+              <ul class="solution-tags">
+                <li data-fr="Support client 24/7" data-en="24/7 customer support">Support client 24/7</li>
+                <li data-fr="FAQ et onboarding" data-en="FAQ & onboarding">FAQ et onboarding</li>
+                <li data-fr="Assistance interne RH / IT" data-en="Internal HR / IT support">Assistance interne RH / IT</li>
+              </ul>
             </div>
-            <span class="card-check">✓</span>
           </div>
-          <div class="hero-orb"></div>
+
+          <div class="solution-row reveal">
+            <div class="solution-index">04</div>
+            <div class="solution-content">
+              <h3 data-fr="Flux de données et intégrations" data-en="Data flows & integrations">Flux de données et intégrations</h3>
+              <p data-fr="Connectez vos outils entre eux et orchestrez des workflows automatisés : synchronisation de données, alertes conditionnelles, génération de rapports — sans coder, sans friction." data-en="Connect your tools and orchestrate automated workflows: data synchronization, conditional alerts, report generation — no coding, no friction.">Connectez vos outils entre eux et orchestrez des workflows automatisés : synchronisation de données, alertes conditionnelles, génération de rapports — sans coder, sans friction.</p>
+              <ul class="solution-tags">
+                <li data-fr="Synchronisation CRM / ERP" data-en="CRM / ERP sync">Synchronisation CRM / ERP</li>
+                <li data-fr="Alertes et notifications" data-en="Alerts & notifications">Alertes et notifications</li>
+                <li data-fr="Tableaux de bord dynamiques" data-en="Dynamic dashboards">Tableaux de bord dynamiques</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-    <div class="hero-scroll-indicator">
-      <span>Découvrir</span>
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===================== PROBLÈME ===================== -->
-  <section class="section section-alt" id="probleme">
-    <div class="container">
-      <div class="section-label fade-in">Le problème</div>
-      <h2 class="section-title fade-in">Votre équipe perd du temps chaque jour sur des tâches qui pourraient être automatisées</h2>
-      <p class="section-sub fade-in">Les entreprises consacrent des ressources précieuses à des opérations répétitives et manuelles — un problème que l'IA peut résoudre.</p>
+    <!-- ========================================================
+         BÉNÉFICES
+    ======================================================== -->
+    <section class="section" id="benefices">
+      <div class="container">
 
-      <div class="problem-grid">
-        <div class="problem-card fade-in">
-          <div class="problem-icon">⏱️</div>
-          <h3>Tâches répétitives à n'en plus finir</h3>
-          <p>Saisie de données, classement de fichiers, réponses aux mêmes questions… vos employés passent des heures sur des tâches à faible valeur ajoutée.</p>
+        <div class="section-header">
+          <p class="section-tag" data-fr="03 — Résultats" data-en="03 — Results">03 — Résultats</p>
+          <h2 data-fr="Des gains mesurables dès les premières semaines d'implémentation." data-en="Measurable gains from the first weeks of implementation.">Des gains mesurables dès les premières semaines d'implémentation.</h2>
         </div>
-        <div class="problem-card fade-in">
-          <div class="problem-icon">📉</div>
-          <h3>Perte de temps = perte d'argent</h3>
-          <p>Chaque heure passée à traiter manuellement des documents ou des emails, c'est une heure de moins pour la croissance de votre entreprise.</p>
-        </div>
-        <div class="problem-card fade-in">
-          <div class="problem-icon">📚</div>
-          <h3>Surcharge administrative</h3>
-          <p>La paperasse, les approbations manuelles et les processus fragmentés ralentissent votre organisation et augmentent le risque d'erreurs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===================== SOLUTIONS ===================== -->
-  <section class="section" id="solutions">
-    <div class="container">
-      <div class="section-label fade-in">Nos solutions</div>
-      <h2 class="section-title fade-in">Des outils IA intégrés directement dans vos processus</h2>
-      <p class="section-sub fade-in">Nous n'imposons pas de solution générique. Chaque implémentation est adaptée à vos outils et à votre réalité.</p>
-
-      <div class="solutions-grid">
-        <!-- Solution 1 -->
-        <div class="solution-card fade-in">
-          <div class="solution-header">
-            <div class="solution-num">01</div>
-            <div class="solution-icon-wrap">📧</div>
+        <div class="benefits-grid">
+          <div class="benefit-card reveal">
+            <div class="benefit-kpi">−50%</div>
+            <h3 data-fr="Temps opérationnel" data-en="Operational time">Temps opérationnel</h3>
+            <p data-fr="Réduction moyenne du temps consacré aux opérations administratives récurrentes." data-en="Average reduction in time spent on recurring administrative operations.">Réduction moyenne du temps consacré aux opérations administratives récurrentes.</p>
           </div>
-          <h3>Automatisation des emails</h3>
-          <p>Classez, priorisez et répondez automatiquement aux emails entrants. L'IA détecte l'intention, rédige des réponses contextuelles et vous alerte uniquement pour ce qui nécessite votre attention.</p>
-          <ul class="solution-features">
-            <li>Réponses automatiques personnalisées</li>
-            <li>Tri et priorisation intelligente</li>
-            <li>Intégration Gmail / Outlook</li>
-          </ul>
-        </div>
-
-        <!-- Solution 2 -->
-        <div class="solution-card solution-card-accent fade-in">
-          <div class="solution-header">
-            <div class="solution-num">02</div>
-            <div class="solution-icon-wrap">📄</div>
+          <div class="benefit-card reveal">
+            <div class="benefit-kpi">−35%</div>
+            <h3 data-fr="Coûts de traitement" data-en="Processing costs">Coûts de traitement</h3>
+            <p data-fr="Diminution des coûts liés aux processus manuels, aux erreurs et aux retards de traitement." data-en="Reduction in costs related to manual processes, errors, and processing delays.">Diminution des coûts liés aux processus manuels, aux erreurs et aux retards de traitement.</p>
           </div>
-          <h3>Traitement de documents</h3>
-          <p>Factures, contrats, bons de commande — l'IA extrait les données clés, les valide et les intègre dans vos systèmes sans intervention humaine.</p>
-          <ul class="solution-features">
-            <li>Extraction automatique de données</li>
-            <li>Validation et détection d'anomalies</li>
-            <li>Intégration ERP / comptabilité</li>
-          </ul>
-          <span class="popular-badge">Le plus populaire</span>
-        </div>
-
-        <!-- Solution 3 -->
-        <div class="solution-card fade-in">
-          <div class="solution-header">
-            <div class="solution-num">03</div>
-            <div class="solution-icon-wrap">💬</div>
+          <div class="benefit-card reveal">
+            <div class="benefit-kpi">×3</div>
+            <h3 data-fr="Capacité de traitement" data-en="Processing capacity">Capacité de traitement</h3>
+            <p data-fr="Vos équipes traitent plus de volume sans augmenter les effectifs ni les heures de travail." data-en="Your teams handle more volume without increasing headcount or working hours.">Vos équipes traitent plus de volume sans augmenter les effectifs ni les heures de travail.</p>
           </div>
-          <h3>Chatbots intelligents</h3>
-          <p>Déployez un assistant IA pour votre support client ou vos équipes internes. Disponible 24h/24, il répond, escalade et apprend de chaque interaction.</p>
-          <ul class="solution-features">
-            <li>Support client 24/7</li>
-            <li>Base de connaissances intégrée</li>
-            <li>Escalade automatique vers un humain</li>
-          </ul>
+          <div class="benefit-card reveal">
+            <div class="benefit-kpi">24/7</div>
+            <h3 data-fr="Disponibilité" data-en="Availability">Disponibilité</h3>
+            <p data-fr="Certains processus critiques fonctionnent en continu — sans interruption, sans délai, sans coût supplémentaire." data-en="Critical processes run continuously — without interruption, delay, or additional cost.">Certains processus critiques fonctionnent en continu — sans interruption, sans délai, sans coût supplémentaire.</p>
+          </div>
         </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===================== BÉNÉFICES ===================== -->
-  <section class="section section-alt" id="benefices">
-    <div class="container">
-      <div class="section-label fade-in">Pourquoi ImplIA</div>
-      <h2 class="section-title fade-in">Des résultats concrets, mesurables dès les premières semaines</h2>
+    <!-- ========================================================
+         CAS D'USAGE
+    ======================================================== -->
+    <section class="section section-tinted" id="cas-usage">
+      <div class="container">
 
-      <div class="benefits-grid">
-        <div class="benefit-card fade-in">
-          <div class="benefit-metric">⏳ –40%</div>
-          <h3>Gain de temps</h3>
-          <p>Vos équipes récupèrent des heures productives chaque semaine, libérées des tâches chronophages et répétitives.</p>
+        <div class="section-header">
+          <p class="section-tag" data-fr="04 — Cas d'usage" data-en="04 — Use Cases">04 — Cas d'usage</p>
+          <h2 data-fr="Ce que l'automatisation change, concrètement." data-en="What automation changes, concretely.">Ce que l'automatisation change, concrètement.</h2>
         </div>
-        <div class="benefit-card fade-in">
-          <div class="benefit-metric">💰 –30%</div>
-          <h3>Réduction des coûts</h3>
-          <p>Moins d'heures facturées à des tâches manuelles. L'IA remplace le volume, pas vos talents.</p>
-        </div>
-        <div class="benefit-card fade-in">
-          <div class="benefit-metric">🚀 ×3</div>
-          <h3>Productivité augmentée</h3>
-          <p>Vos collaborateurs se concentrent sur ce qui compte : stratégie, innovation et relation client.</p>
-        </div>
-        <div class="benefit-card fade-in">
-          <div class="benefit-metric">🎯 99%</div>
-          <h3>Précision accrue</h3>
-          <p>Réduisez les erreurs humaines dans le traitement des données et les communications critiques.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===================== CAS D'USAGE ===================== -->
-  <section class="section" id="cas-usage">
-    <div class="container">
-      <div class="section-label fade-in">Cas d'usage</div>
-      <h2 class="section-title fade-in">Des résultats réels pour des entreprises comme la vôtre</h2>
-
-      <div class="usecase-wrapper fade-in">
-        <div class="usecase-card">
-          <div class="usecase-quote">"</div>
-          <div class="usecase-content">
-            <h3>–40% sur le traitement des factures fournisseurs</h3>
-            <p>Une PME manufacturière traitait manuellement plus de 300 factures par mois. Après l'implémentation d'un pipeline IA par ImplIA, l'extraction des données, la validation et l'intégration comptable se font automatiquement.</p>
-            <div class="usecase-results">
-              <div class="usecase-result">
-                <span class="result-num">300</span>
-                <span class="result-label">factures/mois automatisées</span>
+        <div class="cases-layout">
+          <div class="case-featured reveal">
+            <div class="case-meta">
+              <span class="case-sector" data-fr="PME manufacturière" data-en="Manufacturing SMB">PME manufacturière</span>
+              <span class="case-result" data-fr="−40% de temps de traitement" data-en="−40% processing time">−40% de temps de traitement</span>
+            </div>
+            <h3 data-fr="Traitement automatisé des factures fournisseurs" data-en="Automated supplier invoice processing">Traitement automatisé des factures fournisseurs</h3>
+            <p data-fr="Une PME du secteur manufacturier traitait plus de 300 factures par mois de façon entièrement manuelle. Après l'implémentation d'un pipeline IA, l'extraction des données, la validation et l'intégration comptable se font automatiquement. L'équipe comptable se concentre désormais sur les exceptions et l'analyse — non sur la saisie." data-en="A manufacturing SMB was processing over 300 invoices per month entirely manually. After implementing an AI pipeline, data extraction, validation, and accounting integration happen automatically. The accounting team now focuses on exceptions and analysis — not data entry.">Une PME du secteur manufacturier traitait plus de 300 factures par mois de façon entièrement manuelle. Après l'implémentation d'un pipeline IA, l'extraction des données, la validation et l'intégration comptable se font automatiquement. L'équipe comptable se concentre désormais sur les exceptions et l'analyse — non sur la saisie.</p>
+            <div class="case-stats">
+              <div>
+                <strong>300+</strong>
+                <span data-fr="documents/mois" data-en="documents/month">documents/mois</span>
               </div>
-              <div class="usecase-result">
-                <span class="result-num">40%</span>
-                <span class="result-label">temps de traitement réduit</span>
+              <div>
+                <strong>−40%</strong>
+                <span data-fr="temps de traitement" data-en="processing time">temps de traitement</span>
               </div>
-              <div class="usecase-result">
-                <span class="result-num">0</span>
-                <span class="result-label">erreur de saisie</span>
+              <div>
+                <strong>0</strong>
+                <span data-fr="erreur de saisie" data-en="data entry errors">erreur de saisie</span>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="usecase-card usecase-card-sm fade-in">
-          <div class="usecase-icon">💬</div>
-          <h4>Chatbot de support interne</h4>
-          <p>Une entreprise de services a déployé un assistant IA pour répondre aux questions RH et IT de ses 80 employés. Résultat : 60% des requêtes résolues sans intervention humaine.</p>
-          <div class="tag-row">
-            <span class="tag">RH</span>
-            <span class="tag">Support IT</span>
-            <span class="tag">60% résolu par IA</span>
+          <div class="cases-secondary">
+            <div class="case-card reveal">
+              <span class="case-sector" data-fr="Cabinet conseil" data-en="Consulting firm">Cabinet conseil</span>
+              <h4 data-fr="Gestion des courriels entrants" data-en="Incoming email management">Gestion des courriels entrants</h4>
+              <p data-fr="200+ courriels hebdomadaires traités automatiquement : classification, priorisation, réponses standards générées par l'IA. L'équipe n'intervient que sur les dossiers complexes." data-en="200+ weekly emails handled automatically: classification, prioritization, AI-generated standard responses. The team only steps in for complex files.">200+ courriels hebdomadaires traités automatiquement : classification, priorisation, réponses standards générées par l'IA. L'équipe n'intervient que sur les dossiers complexes.</p>
+              <div class="case-tag" data-fr="−60% de temps sur les emails" data-en="−60% time spent on emails">−60% de temps sur les emails</div>
+            </div>
+            <div class="case-card reveal">
+              <span class="case-sector" data-fr="Entreprise de services" data-en="Services company">Entreprise de services</span>
+              <h4 data-fr="Assistant IA interne" data-en="Internal AI assistant">Assistant IA interne</h4>
+              <p data-fr="80 employés bénéficient d'un assistant IA pour les questions RH et IT récurrentes. 60 % des requêtes sont résolues sans intervention humaine." data-en="80 employees benefit from an AI assistant for recurring HR and IT questions. 60% of requests are resolved without human intervention.">80 employés bénéficient d'un assistant IA pour les questions RH et IT récurrentes. 60 % des requêtes sont résolues sans intervention humaine.</p>
+              <div class="case-tag" data-fr="60% résolu automatiquement" data-en="60% resolved automatically">60% résolu automatiquement</div>
+            </div>
           </div>
         </div>
 
-        <div class="usecase-card usecase-card-sm fade-in">
-          <div class="usecase-icon">📧</div>
-          <h4>Gestion des emails entrants</h4>
-          <p>Un cabinet conseil recevait 200+ emails/semaine. L'IA classe, priorise et répond aux demandes standards. L'équipe ne traite plus que les cas complexes.</p>
-          <div class="tag-row">
-            <span class="tag">Emails</span>
-            <span class="tag">Priorisation IA</span>
-            <span class="tag">200+ emails/semaine</span>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         À PROPOS
+    ======================================================== -->
+    <section class="section" id="apropos">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="section-tag" data-fr="05 — À propos" data-en="05 — About">05 — À propos</p>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-text reveal">
+            <h2 data-fr="Une approche terrain, sans jargon." data-en="A hands-on approach, without the jargon.">Une approche terrain, sans jargon.</h2>
+            <p data-fr="ImplIA est fondée par un étudiant en administration des affaires à l'UQAM, concentration technologies de l'information. Ce projet naît d'une conviction : les outils d'IA les plus puissants ne servent à rien si leur implémentation est mal conçue ou déconnectée des réalités opérationnelles d'une entreprise." data-en="ImplIA was founded by a business administration student at UQAM, majoring in information technologies. This project stems from a conviction: the most powerful AI tools are worthless if their implementation is poorly designed or disconnected from a company's operational realities.">ImplIA est fondée par un étudiant en administration des affaires à l'UQAM, concentration technologies de l'information. Ce projet naît d'une conviction : les outils d'IA les plus puissants ne servent à rien si leur implémentation est mal conçue ou déconnectée des réalités opérationnelles d'une entreprise.</p>
+            <p data-fr="Mon travail consiste à comprendre vos processus existants, identifier les points de friction les plus coûteux, et concevoir des automatisations qui s'intègrent naturellement à votre organisation — sans tout bouleverser." data-en="My work is to understand your existing processes, identify the most costly friction points, and design automations that integrate naturally into your organization — without disrupting everything.">Mon travail consiste à comprendre vos processus existants, identifier les points de friction les plus coûteux, et concevoir des automatisations qui s'intègrent naturellement à votre organisation — sans tout bouleverser.</p>
+            <div class="about-details">
+              <div class="about-detail">
+                <span class="detail-label" data-fr="Formation" data-en="Education">Formation</span>
+                <span class="detail-value">UQAM — BAA, Technologies de l'information</span>
+              </div>
+              <div class="about-detail">
+                <span class="detail-label" data-fr="Localisation" data-en="Location">Localisation</span>
+                <span class="detail-value">Montréal, Québec</span>
+              </div>
+              <div class="about-detail">
+                <span class="detail-label" data-fr="Spécialité" data-en="Speciality">Spécialité</span>
+                <span class="detail-value" data-fr="Implémentation IA pour PME" data-en="AI implementation for SMBs">Implémentation IA pour PME</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-aside reveal">
+            <div class="principle-card">
+              <h4 data-fr="Nos engagements" data-en="Our commitments">Nos engagements</h4>
+              <ul>
+                <li data-fr="Implémentation adaptée à votre contexte — pas de solution générique" data-en="Implementation tailored to your context — no generic solution">Implémentation adaptée à votre contexte — pas de solution générique</li>
+                <li data-fr="Résultats mesurables définis avant le démarrage" data-en="Measurable results defined before launch">Résultats mesurables définis avant le démarrage</li>
+                <li data-fr="Transfert de compétences : votre équipe reste autonome" data-en="Knowledge transfer: your team stays autonomous">Transfert de compétences : votre équipe reste autonome</li>
+                <li data-fr="Intégration dans vos outils existants — aucune migration requise" data-en="Integration into your existing tools — no migration required">Intégration dans vos outils existants — aucune migration requise</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         CTA
+    ======================================================== -->
+    <section class="section cta-section" id="contact">
+      <div class="container">
+        <div class="cta-block reveal">
+          <p class="cta-pre" data-fr="Commençons" data-en="Let's start">Commençons</p>
+          <h2 class="cta-heading" data-fr="Un appel de 30 minutes pour identifier vos opportunités d'automatisation." data-en="A 30-minute call to identify your automation opportunities.">Un appel de 30 minutes pour identifier vos opportunités d'automatisation.</h2>
+          <p class="cta-sub" data-fr="Sans engagement. Vous repartez avec une analyse claire des processus automatisables dans votre entreprise et une estimation du temps récupéré." data-en="No commitment. You leave with a clear analysis of automatable processes in your business and an estimate of time saved.">Sans engagement. Vous repartez avec une analyse claire des processus automatisables dans votre entreprise et une estimation du temps récupéré.</p>
+          <div class="cta-actions">
+            <!-- Replace href with your Calendly or Google Meet link -->
+            <a href="https://calendly.com/implia" target="_blank" rel="noopener noreferrer" class="btn-primary btn-primary-lg" data-fr="Réserver un appel" data-en="Book a call">Réserver un appel</a>
+            <a href="mailto:contact@implia.ca" class="btn-text-link" data-fr="Ou écrire directement : contact@implia.ca" data-en="Or write directly: contact@implia.ca">Ou écrire directement : contact@implia.ca</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===================== À PROPOS ===================== -->
-  <section class="section section-alt" id="apropos">
-    <div class="container">
-      <div class="section-label fade-in">À propos</div>
-      <div class="about-wrapper fade-in">
-        <div class="about-content">
-          <h2>Une approche humaine de l'automatisation</h2>
-          <p>ImplIA est fondée par un étudiant en administration des affaires à l'UQAM (concentration technologies de l'information), passionné par l'impact concret de l'IA sur les organisations.</p>
-          <p>Ma conviction : l'intelligence artificielle n'est pas réservée aux grandes corporations. Chaque PME, chaque équipe, peut bénéficier d'outils puissants — à condition qu'ils soient bien implémentés, dans le respect de vos processus existants.</p>
-          <p>Chez ImplIA, je travaille directement avec vous pour identifier les opportunités, implémenter les solutions, et m'assurer qu'elles livrent des résultats mesurables.</p>
-          <div class="about-tags">
-            <span class="tag">📍 Montréal, Québec</span>
-            <span class="tag">🎓 UQAM — TI</span>
-            <span class="tag">🤖 IA appliquée</span>
-            <span class="tag">🤝 B2B</span>
-          </div>
-        </div>
-        <div class="about-visual">
-          <div class="about-avatar">
-            <div class="avatar-initials">IA</div>
-          </div>
-          <div class="about-card">
-            <div class="about-card-line">
-              <span class="about-card-key">Entreprise</span>
-              <span class="about-card-val">ImplIA</span>
-            </div>
-            <div class="about-card-line">
-              <span class="about-card-key">Ville</span>
-              <span class="about-card-val">Montréal, QC</span>
-            </div>
-            <div class="about-card-line">
-              <span class="about-card-key">Formation</span>
-              <span class="about-card-val">UQAM — BAA</span>
-            </div>
-            <div class="about-card-line">
-              <span class="about-card-key">Spécialité</span>
-              <span class="about-card-val">Technologies de l'information</span>
-            </div>
-            <div class="about-card-line">
-              <span class="about-card-key">Focus</span>
-              <span class="about-card-val">IA & automatisation B2B</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <!-- ===================== CTA ===================== -->
-  <section class="section cta-section" id="contact">
-    <div class="container">
-      <div class="cta-inner fade-in">
-        <span class="cta-badge">Prêt à démarrer ?</span>
-        <h2>Réservez un appel stratégique gratuit</h2>
-        <p>En 30 minutes, nous identifions ensemble les processus de votre entreprise qui peuvent être automatisés — et vous repartez avec un plan d'action clair.</p>
-        <div class="cta-buttons">
-          <!-- Remplacez le href par votre lien Calendly ou Google Meet -->
-          <a href="https://calendly.com/implia" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-            📅 Réserver un appel →
-          </a>
-          <a href="mailto:contact@implia.ca" class="btn btn-outline-white btn-lg">
-            ✉️ Envoyer un email
-          </a>
-        </div>
-        <p class="cta-note">Gratuit • Sans engagement • Réponse sous 24h</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
+  <!-- ========================================================
+       FOOTER
+  ======================================================== -->
+  <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <a href="#hero" class="logo logo-footer">Impl<span class="logo-accent">IA</span></a>
-        <p>Automatisation intelligente des processus pour les entreprises de Montréal et du Québec.</p>
-        <p class="footer-location">📍 Montréal, Québec, Canada</p>
+        <a href="#" class="wordmark">Impl<span>IA</span></a>
+        <p data-fr="Automatisation IA pour entreprises." data-en="AI automation for businesses.">Automatisation IA pour entreprises.</p>
+        <p class="footer-location">Montréal, Québec</p>
       </div>
-      <div class="footer-links">
+      <div class="footer-nav">
         <div class="footer-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#probleme">Le problème</a></li>
-            <li><a href="#solutions">Solutions</a></li>
-            <li><a href="#benefices">Bénéfices</a></li>
-            <li><a href="#cas-usage">Cas d'usage</a></li>
-          </ul>
+          <p class="footer-col-title" data-fr="Navigation" data-en="Navigation">Navigation</p>
+          <a href="#probleme" data-fr="Le problème" data-en="The Problem">Le problème</a>
+          <a href="#solutions" data-fr="Solutions" data-en="Solutions">Solutions</a>
+          <a href="#benefices" data-fr="Résultats" data-en="Results">Résultats</a>
+          <a href="#apropos" data-fr="À propos" data-en="About">À propos</a>
         </div>
         <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:contact@implia.ca">contact@implia.ca</a></li>
-            <!-- Remplacez par votre lien Calendly -->
-            <li><a href="https://calendly.com/implia" target="_blank" rel="noopener noreferrer">Réserver un appel</a></li>
-          </ul>
+          <p class="footer-col-title" data-fr="Contact" data-en="Contact">Contact</p>
+          <a href="mailto:contact@implia.ca">contact@implia.ca</a>
+          <a href="https://calendly.com/implia" target="_blank" rel="noopener noreferrer" data-fr="Réserver un appel" data-en="Book a call">Réserver un appel</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <span>© 2025 ImplIA. Tous droits réservés.</span>
-        <span>Montréal, Québec</span>
+        <span data-fr="© 2025 ImplIA. Tous droits réservés." data-en="© 2025 ImplIA. All rights reserved.">© 2025 ImplIA. Tous droits réservés.</span>
+        <span>Montréal, Québec, Canada</span>
       </div>
     </div>
   </footer>
